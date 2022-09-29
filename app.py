@@ -40,6 +40,8 @@ session = Session(engine)
 # create instance
 app = Flask(__name__)
 
+##
+
 # define welcome route
 @app.route('/')
 
@@ -54,3 +56,44 @@ def welcome():
     /api/v1.0/tobs
     /api/v1.0/temp/start/end
     ''')
+
+##
+
+# define precipitation route
+@app.route("/api/v1.0/precipitation")
+
+# precipitation function
+def precipitation():
+
+    # select year of precip data 
+    prev_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
+
+    # write query
+    precipitation = session.query(Measurement.date, Measurement.prcp).\
+            filter(Measurement.date >= prev_year).all()
+
+    # create dict from query
+    precip = {date: prcp for date, prcp in precipitation}
+    
+    # return precip dict in json format
+    return jsonify(precip)
+
+##
+
+# define stations route
+
+# stations function
+
+##
+
+# define tobs route
+
+# tobs function
+
+##
+
+# define temp route
+
+# temp function
+
+
