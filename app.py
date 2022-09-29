@@ -98,9 +98,22 @@ def stations():
 ##
 
 # define tobs route
+@app.route('/api/v1.0/tobs')
 
 # tobs function
+def temp_monthly():
+    # select year for data 
+    prev_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
 
+    #write query
+    results = session.query(Measurement.tobs).\
+        filter(Measurement.station == 'USC00519281').\
+        filter(Measurement.date >= prev_year).all()
+    
+    # create list from query
+    temps = list(np.ravel(results))
+
+    return jsonify(temps=temps)
 ##
 
 # define temp route
