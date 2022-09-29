@@ -81,9 +81,20 @@ def precipitation():
 ##
 
 # define stations route
+@app.route('/api/v1.0/stations')
 
 # stations function
+def stations():
+    
+    # write query
+    results = session.query(Station.station).all()
 
+    # create array from results
+    stations = list(np.ravel(results))
+
+    # return station data in json format
+    return jsonify(stations=stations)
+    
 ##
 
 # define tobs route
