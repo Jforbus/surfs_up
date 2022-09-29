@@ -113,11 +113,40 @@ def temp_monthly():
     # create list from query
     temps = list(np.ravel(results))
 
+    # return temp data in json format
     return jsonify(temps=temps)
 ##
 
 # define temp route
+@app.route("/api/v1.0/temp/<start>")
+@app.route("/api/v1.0/temp/<start>/<end>")
 
 # temp function
-
+def stats(start=None, end=None):
+    
+    # create list for query
+    sel = [func.min(Measurement.tobs),\
+         func.avg(Measurement.tobs), func.max(Measurement.tobs)]
+    
+    # query with no end date
+    if not end:
+        results = session.query(*sel).\
+            filter(Measurement.date >= start).all()
+        
+        # create list from query
+        temps = list(np.ravel(results))
+        
+        # return temp data in json format
+        return jsonify(temps=temps)
+    
+    # query with end date
+    results = session.query(*sel).\
+        filter(Measurement.date >= start).\
+        filter(Measurement.date <= end).all()
+    
+    # create list from query
+    temps = list(np.ravel(results))
+    
+    # return temp data in json format
+    return jsonify(temps=temps)
 
