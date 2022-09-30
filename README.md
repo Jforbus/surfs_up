@@ -19,13 +19,13 @@ Two queries are written using the SQLAlchemy `extract()` function to collect all
 
 ### Analysis
 From the summary statistics we can discern three things:
-'''
-    * The December minumum temperature is relatively low compared to June's, while the maximum temperatures do not differ a meaningful amount. The temperature in this dataset shows the potential for temperature falloffs in December, but does not show a corresponding temperature spike in June.
 
-    * The average temperatures for the two months are very close to being the same, with only 3 degrees difference in the mean. This shows relatively consistent temperatures in the two months, with slightly elevated temperatures in June as compared to December.
+* The December minumum temperature is relatively low compared to June's, while the maximum temperatures do not differ a meaningful amount. The temperature in this dataset shows the potential for temperature falloffs in December, but does not show a corresponding temperature spike in June.
 
-    * The standard deviation for the temperature data in both months is the same and relatively small, showing a tight grouping of the data. This corresponds with the range of our dataset being fairly limited. The temperature in the location measured does not vary wildy either within or between the two months measured.  
-'''
+* The average temperatures for the two months are very close to being the same, with only 3 degrees difference in the mean. This shows relatively consistent temperatures in the two months, with slightly elevated temperatures in June as compared to December.
+
+* The standard deviation for the temperature data in both months is the same and relatively small, showing a tight grouping of the data. This corresponds with the range of our dataset being fairly limited. The temperature in the location measured does not vary wildy either within or between the two months measured.  
+
 
 ## Summary
 The temperature data for June and December suggests a positive outlook for the desired location, with consistent comfortable temperatures in both of the months measured. Two additional queries that could be written to gather additional data for the months of June and December and further expand the information provided by the analysis would be: A query to provide the summary statistics for precipitation in June, and a query to provide the summary statistics for precipitation in December. With this data we can further determine the viablity of the surf and shake shop in the selected location, as heavy rainfall in one of the months could indicate a potential business hazard. 
